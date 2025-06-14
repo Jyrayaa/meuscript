@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Meus Scripts de Roblox</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+      margin: 0;
+      padding: 30px;
+    }
+    h1 {
+      color: #00e676;
+    }
+    select, textarea, button {
+      width: 100%;
+      font-size: 16px;
+      margin-top: 15px;
+      border-radius: 6px;
+      padding: 12px;
+      border: none;
+      box-sizing: border-box;
+    }
+    textarea {
+      background-color: #1e1e1e;
+      color: #e0e0e0;
+      height: 300px;
+      font-family: monospace;
+      resize: none;
+    }
+    button {
+      background-color: #00e676;
+      color: #000000;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #00c853;
+    }
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎮 Meus Scripts de Roblox</h1>
+  <p>Escolha um script e clique em <strong>"Copiar Script"</strong> para usá-lo em seu executor Roblox.</p>
+
+  <label for="scriptSelect"><strong>Selecionar Script:</strong></label>
+  <select id="scriptSelect" onchange="mudarScript()">
+    <option value="autofarm">Auto Farm</option>
+    <option value="fly">Modo Voo</option>
+    <option value="teleport">Teleporte Rápido</option>
+  </select>
+
+  <label for="scriptBox"><strong>Script:</strong></label>
+  <textarea id="scriptBox" readonly></textarea>
+
+  <button onclick="copiarScript()">📋 Copiar Script</button>
+
+  <footer>
+    <p>Feito por Você &copy; 2025 | Use com responsabilidade 🎯</p>
+  </footer>
+
+  <script>
+    const scripts = {
+      autofarm: `-- Script Auto Farm Roblox
+while true do
+  wait(1)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Mobs.Mob1.HumanoidRootPart.CFrame
+end`,
+
+      fly: `-- Script de Modo Voo
+loadstring(game:HttpGet("https://pastebin.com/raw/YOURSCRIPTID"))()`,
+
+      teleport: `-- Script de Teleporte Rápido
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(100, 50, 100)`
+    };
+
+    function mudarScript() {
+      const valorSelecionado = document.getElementById("scriptSelect").value;
+      document.getElementById("scriptBox").value = scripts[valorSelecionado];
+    }
+
+    function copiarScript() {
+      const box = document.getElementById("scriptBox");
+      box.select();
+      document.execCommand("copy");
+      alert("✅ Script copiado com sucesso!");
+    }
+
+    // Mostrar o primeiro script ao carregar
+    mudarScript();
+  </script>
+</body>
+</html>
